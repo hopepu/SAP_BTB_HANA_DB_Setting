@@ -23,3 +23,6 @@ File or Folder | Purpose
 ## Learn More
 
 Learn more at https://cap.cloud.sap/docs/get-started/.
+
+# SAP_BTB_HANA_DB_Setting
+e2b85ac87acf4edc1edfe6ea5f956a21ddda95c9
