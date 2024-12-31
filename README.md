@@ -1,0 +1,1 @@
+# SAP_BTB_HANA_DB_Setting
