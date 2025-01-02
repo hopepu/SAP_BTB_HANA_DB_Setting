@@ -30,6 +30,12 @@
       "db": {
         "kind": "hana-cloud"
       }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
     }
+  },
+  "devDependencies": {
+    "@sap/hdi-deploy": "4.9.5"
   }
 }

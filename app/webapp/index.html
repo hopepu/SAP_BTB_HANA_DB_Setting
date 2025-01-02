@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> UI5 Walkthrough </title>
+        <script 
+            id="sap-ui-bootstrap"               // 태그의 속성
+            src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"      // 속성에 지정된 라이브러리 SAPUI5 코어 라이브러리의 위치
+            data-sap-ui-theme="sap_horizon"     // SAPUI5 컨트롤 기본 테마로 설정
+            //data-sap-ui-libs="sap.m"            // UI 컨트롤이 포함된 필수 UI 라이브러리 지정
+            data-sap-ui-compat-version="edge"   // SAPUI5의 호환성 버전을 최신으로 정의
+            data-sap-ui-async="true"            // 부트스트래핑 프로세스를 비동기적으로 실행하도록 구성
+            //data-sap-ui-on-init="module:ui5/walkthrough/index"  //선언적 방식으로 초기에 로드할 모듈을 정의 : HTML파일에서 직접 실행 가능한 JavaScript 코드를 피할수 있음
+            data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
+            data-sap-ui-resource-roots='{       
+                "ui5.walkthrough": "./"
+            }'                                 // SAPUI5 코어에 네임스페이스의 리소스가 같은 폴더에 있음을 알려줌
+            >
+
+        </script>
+    </head>
+
+    <body class = "sapUiBody" id="content">
+        <!-- <div> Hello World </div> -->
+         <div data-sap-ui-component data-name="ui5.walkthrough" data-id="container" data-setting='{"id":"walkthrough"}'></div>
+    </body>
+</html>

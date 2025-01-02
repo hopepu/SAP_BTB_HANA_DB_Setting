@@ -29,11 +29,26 @@ modules:
 
   - name: DEMO-db-deployer
     type: hdb
-    path: db    #gen/db
+    path: db #gen/db
     parameters:
       buildpack: nodejs_buildpack
     requires:
       - name: DEMO-db
+
+  - name: DEMO
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
 
 resources:
   - name: DEMO-db

@@ -24,6 +24,24 @@
         "--in-memory?"
       ],
       "problemMatcher": []
+    },
+    {
+      "label": "cds-deploy-to-hana-DEMO-DEMO-dev",
+      "type": "shell",
+      "command": "cds",
+      "args": [
+        "deploy",
+        "--to",
+        "hana:DEMO-dev",
+        "--no-save"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": [
+        "$cap-hdi-bind-handler"
+      ]
     }
   ]
 }
