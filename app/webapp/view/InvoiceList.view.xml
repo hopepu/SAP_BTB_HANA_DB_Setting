@@ -3,89 +3,83 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc">
+        
+    <VBox>       
+        <HBox justifyContent="Center">
+            <!-- 요청 번호 필터 -->            
+            <Input id="requestNumberFilter" liveChange="onFilterChange" placeholder="신청 번호"/>
+            <!-- 요청 물품 필터 -->            
+            <Input id="requestProductFilter" liveChange="onFilterChange" placeholder="상품명"/>
+            <!-- 요청자 필터 -->            
+            <Input id="requestorFilter" liveChange="onFilterChange" placeholder="요청자"/>
+            <!-- 요청 일자 필터 -->            
+            <DatePicker id="requestDateFilter" change="onFilterChange" placeholder="신청 날짜"/>
+            <!-- 처리 상태 필터 -->            
+            <Select id="requestStateFilter" change="onFilterChange">
+                <items>
+                    <core:Item key="" text="진행도" />
+                    <core:Item key="A" text="반려" />
+                    <core:Item key="B" text="신청 중" />
+                    <core:Item key="C" text="구매 진행중" />
+                    <core:Item key="D" text="구매 완료" />
+                </items>
+            </Select>
+            <Button text="초기화" press="onResetFilter" type="Emphasized"/>            
+        </HBox>
+    </VBox>
+
+    <!-- 요청 데이터 테이블 -->
+    <!-- sap.m.table -->
     <Table
-        id="InvoiceList"
-        class="sapUiResponsiveMargin"
+        id="RequestLists"
+        class="sapUiResponsiveMargin"        
         width="auto"
         items="{
-            path:'invoice>/Invoices',
-            sorter : {
-            path : 'ShipperName',
-            group : true
+            path: 'request>/Request',
+            sorter: {
+                path: 'request_date',
+                group: false   
             }
-        }" >
-        <headerToolbar>
-            <Toolbar>
-                <Title text="{i18n>invoiceListTitle}"/>
-                <ToolbarSpacer/>
-                <SearchField 
-                width="50%" 
-                search=".onFilterInvoices"/>
-            </Toolbar>
-        </headerToolbar>
-        <columns>
-			<Column
-				hAlign="End"
-				minScreenWidth="Small"
-				demandPopin="true"
-				width="5em">
-				<Text text="{i18n>columnQuantity}" />
-			</Column>
-			<Column>
-				<Text text="{i18n>columnName}" />
-			</Column>
-			<Column
-				minScreenWidth="Small"
-				demandPopin="true">
-				<Text text="{i18n>columnStatus}" />
-			</Column>
-			<Column
-				minScreenWidth="Tablet"
-				demandPopin="false">
-				<Text text="{i18n>columnSupplier}" />
-			</Column>
-			<Column hAlign="End">
-				<Text text="{i18n>columnPrice}" />
-			</Column>
-		</columns>
-		<items>
-			<ColumnListItem
-				type="Navigation"
-				press=".onPress">
-				<cells>
-					<ObjectNumber
-						number="{invoice>Quantity}"
-						emphasized="false"/>
-					<ObjectIdentifier title="{invoice>ProductName}" />
-					<Text
-						core:require="{
-								Formatter: 'ui5/walkthrough/model/formatter'
-						}"
-						text="{
-								parts: [
-									'invoice>Status',
-									'i18n>invoiceStatusA',
-									'i18n>invoiceStatusB',
-									'i18n>invoiceStatusC'
-								],
-								formatter: 'Formatter.statusText.bind($controller)'
-						}"/>
-					<Text text="{invoice>ShipperName}" />
-					<ObjectNumber
-						number="{
-								parts: [
-									'invoice>ExtendedPrice',
-									'view>/currency'
-								],
-								type: 'sap.ui.model.type.Currency',
-								formatOptions: {
-									showMeasure: false
-								}
-							}"
-						unit="{view>/currency}"
-						state="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success' }"/>
-				</cells>
-			</ColumnListItem>
-		</items>
-	</Table>   
+        }">       
+        <columns>            
+            <Column hAlign="Center">
+                <Text text="{i18n>columnRequestNumber}"/>
+            </Column>
+            <Column hAlign="Center">
+                <Text text="{i18n>columnRequestProduct}"/>
+            </Column>
+            <Column hAlign="Center">
+                <Text text="{i18n>columnRequestQuantity}"/>
+            </Column>
+            <Column hAlign="Center">
+                <Text text="{i18n>columnRequestor}"/>
+            </Column>
+            <Column hAlign="Center">
+                <Text text="{i18n>columnRequestDate}"/>
+            </Column>
+            <Column hAlign="Center">
+                <Text text="{i18n>columnRequestState}"/>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem
+                type="Navigation"
+                press=".onPress">
+                <cells>                    
+                    <Text text="{request>request_number}"/>
+                    <Text text="{request>request_product}"/>
+                    <Text text="{request>request_quantity}"/>
+                    <Text text="{request>requestor}"/>
+                    <Text text="{request>request_date}"/>
+                    <Text text="{ path: 'request>request_state', formatter: '.formatter.statusText' }" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+
+    <VBox>
+        <HBox justifyContent="End">
+            <Button text="물품 신청" press=".onPressAdd" type="Emphasized"/>
+        </HBox>
+    </VBox>
 </mvc:View>

@@ -1,0 +1,2 @@
+sap.ui.define([],function(){"use strict";return{statusText:function(e){const t=this.getOwnerComponent().getModel("i18n");return t.getResourceBundle().then(function(t){switch(e){case"A":return t.getText("반려");case"B":return t.getText("신청 중");case"C":return t.getText("구매 진행 중");case"D":return t.getText("구매 완료");default:return e}}).catch(function(t){console.error("Error loading resource bundle:",t);return e})}}});
+//# sourceMappingURL=formatter.js.map

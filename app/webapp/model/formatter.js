@@ -9,11 +9,13 @@ sap.ui.define([], function() {
         return oModel.getResourceBundle().then(function(oResourceBundle) {
           switch (sStatus) {
             case "A":
-              return oResourceBundle.getText("invoiceStatusA");
+              return oResourceBundle.getText("rejectedRequest");
             case "B":
-              return oResourceBundle.getText("invoiceStatusB");
+              return oResourceBundle.getText("requestApplying");
             case "C":
-              return oResourceBundle.getText("invoiceStatusC");
+              return oResourceBundle.getText("requestPurchasing");
+            case "D":
+              return oResourceBundle.getText("purchaseCompleted");
             default:
               return sStatus;
           }

@@ -1,0 +1,127 @@
+{
+  "_version": "1.58.0",
+  "sap.app": {
+    "id": "ui5.walkthrough",
+    "i18n": {
+      "bundleUrl": "i18n/i18n.properties",
+      "supportedLocales": [
+        "",
+        "en",
+        "ko_KR"
+      ]
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "type": "application",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "requestService": {
+        "uri": "/odata/v4/request/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.108.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {}
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ui5.walkthrough.i18n.i18n",
+          "supportedLocales": [
+            "",
+            "ko_KR",
+            "en"
+          ],
+          "fallbackLocale": "en",
+          "async": true
+        }
+      },
+      "request": {
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "dataSource": "requestService",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "ui5.walkthrough.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true,
+        "clearTarget": false
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "Overview",
+          "target": "overview"
+        },
+        {
+          "pattern": "detail/{requestPath}",
+          "name": "detail",
+          "target": "detail"
+        }
+      ],
+      "targets": {
+        "overview": {
+          "viewName": "Overview",
+          "viewId": "overview",
+          "viewType": "XML"
+        },
+        "detail": {
+          "viewName": "Detail",
+          "viewId": "detail",
+          "viewType": "XML"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "ui5.walkthrough.view.App",
+      "type": "XML",
+      "id": "app"
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ],
+      "js": [
+        {
+          "uri": "Component-preload.js"
+        }
+      ]
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    }
+  }
+}

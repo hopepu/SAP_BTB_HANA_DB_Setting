@@ -1,5 +1,6 @@
 {
   "name": "approuter",
+  "version":"1.0.0",
   "dependencies": {
     "@sap/approuter": "^17.0.0"
   },

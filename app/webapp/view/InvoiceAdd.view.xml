@@ -1,0 +1,31 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  controllerName="ui5.walkthrough.controller.InvoiceAdd">
+  
+  <VBox>
+    <Label text="신청번호"/>
+    <Input id="requestNum"  type="Number"></Input>
+
+
+    <Label text="제품명" />
+    <Input id="requestProduct" />
+    
+    <Label text="수량" />
+    <Input id="requestQuantity"  type="Number"/>
+    
+    <Label text="신청자" />
+    <Input id="requestor" />
+
+    <Label text="신청사유" />
+    <TextArea id="requestReason" rows="4" width="100%"></TextArea>
+
+    <Label text="요청 날짜" />
+    <DatePicker id="requestDate" editable="false"/>        
+        
+    <HBox justifyContent="Center" width="100%" > <!-- 버튼 정렬 -->
+      <Button text="신청하기" press="onSave" type="Emphasized" /> <!-- 강조 버튼 -->
+      <Button text="취소하기" press="onCancel" type="Reject" /> <!-- 취소 버튼 -->
+    </HBox>
+  </VBox>
+</mvc:View>

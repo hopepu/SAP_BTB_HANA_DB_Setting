@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <VBox>
+        <!-- 요청 번호 (항상 읽기 전용) -->
+        <HBox>
+            <Text text="요청 번호 : " />
+            <Input value="{request>request_number}" width="70%" editable="false" type="Number"/>
+        </HBox>
+
+        <!-- 요청 물품 -->
+        <HBox>
+            <Text text="요청 물품 : " />
+            <Input id="requestProductField" value="{request>request_product}" width="70%" editable="false"/>
+        </HBox>
+
+        <!-- 요청 수량 -->
+        <HBox>
+            <Text text="요청 수량 : " />
+            <Input id="requestQuantityField" value="{request>request_quantity}" width="70%" type="Number" editable="false"/>
+        </HBox>
+
+        <!-- 요청자 -->
+        <HBox>
+            <Text text="요 청 자 : " />
+            <Input id="requestorField" value="{request>requestor}" width="70%" editable="false"/>
+        </HBox>
+
+        <!-- 요청 날짜 -->
+        <HBox>
+            <Text text="요청 날짜 : " />
+            <DatePicker id="requestDateField" value="{request>request_date}" displayFormat="yyyy-MM-dd" width="70%" editable="false"/>
+        </HBox>
+
+    
+        <!-- 처리 상태 -->
+        <HBox>
+            <Text text="처리 상태 : " />
+            <ComboBox id="requestStateField" selectedKey="{request>request_state}" width="70%" editable="false">
+                <core:Item key="A" text="반려" />
+                <core:Item key="B" text="신청 중" />
+                <core:Item key="C" text="구매 진행 중" />
+                <core:Item key="D" text="구매 완료" />
+            </ComboBox>
+        </HBox>
+    </VBox>
+</core:FragmentDefinition>

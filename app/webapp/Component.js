@@ -75,8 +75,9 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
     "sap/ui/model/json/JSONModel",
-    "sap/ui/Device"
-], (UIComponent, JSONModel, Device) => {
+    "sap/ui/Device",
+    "sap/ui/model/odata/v2/ODataModel"
+], (UIComponent, JSONModel, Device, ODataModel) => {
     "use strict";
 
     return UIComponent.extend("ui5.walkthrough.Component", {
